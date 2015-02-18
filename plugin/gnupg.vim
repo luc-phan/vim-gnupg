@@ -665,6 +665,7 @@ function s:GPGEncrypt()
   let cmd = { 'level': 1, 'ex': "'[,']w !" }
   let cmd.args = '--quiet --no-encrypt-to ' . options
   let cmd.redirect = '>' . shellescape(destfile, 1)
+  let $GPG_TTY=$SSH_TTY
   silent call s:GPGExecute(cmd)
 
   " restore encoding
